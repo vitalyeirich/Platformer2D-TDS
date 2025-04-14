@@ -6,18 +6,18 @@ using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Rigidbody2D))]
 
-// Значение гравитации уже выставлено на 0 при старте
-// Привет
+// Р—РЅР°С‡РµРЅРёРµ РіСЂР°РІРёС‚Р°С†РёРё СѓР¶Рµ РІС‹СЃС‚Р°РІР»РµРЅРѕ РЅР° 0 РїСЂРё СЃС‚Р°СЂС‚Рµ
+// РџРѕРјРµРЅСЏР» РєРѕРґРёСЂРѕРІРєСѓ
 
 public class TopDownPlayer : MonoBehaviour
 {
-    // обычная скорость
+    // РѕР±С‹С‡РЅР°СЏ СЃРєРѕСЂРѕСЃС‚СЊ
     public float moveSpeed = 5f;
 
-    // скорость рывка
+    // СЃРєРѕСЂРѕСЃС‚СЊ СЂС‹РІРєР°
     public float dashSpeed = 15f;
 
-    // длительность рывка в секундах
+    // РґР»РёС‚РµР»СЊРЅРѕСЃС‚СЊ СЂС‹РІРєР° РІ СЃРµРєСѓРЅРґР°С…
     public float dashDuration = 0.2f;
 
     private Vector2 moveDirection;
@@ -26,28 +26,28 @@ public class TopDownPlayer : MonoBehaviour
 
     void Update()
     {
-        // Функция для обработки ввода с клавиатуры
+        // Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РІРІРѕРґР° СЃ РєР»Р°РІРёР°С‚СѓСЂС‹
         ProcessInputs();
     }
 
     void FixedUpdate()
     {
-        // Функция, которая отвечает за передвижение объекта на основе направления и скорости
+        // Р¤СѓРЅРєС†РёСЏ, РєРѕС‚РѕСЂР°СЏ РѕС‚РІРµС‡Р°РµС‚ Р·Р° РїРµСЂРµРґРІРёР¶РµРЅРёРµ РѕР±СЉРµРєС‚Р° РЅР° РѕСЃРЅРѕРІРµ РЅР°РїСЂР°РІР»РµРЅРёСЏ Рё СЃРєРѕСЂРѕСЃС‚Рё
         Move();
     }
 
     void ProcessInputs()
     {
-        // Считываем горизонтальное направление
+        // РЎС‡РёС‚С‹РІР°РµРј РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕРµ РЅР°РїСЂР°РІР»РµРЅРёРµ
         float moveX = Input.GetAxisRaw("Horizontal");
 
-        // Считываем вертикальное направление
+        // РЎС‡РёС‚С‹РІР°РµРј РІРµСЂС‚РёРєР°Р»СЊРЅРѕРµ РЅР°РїСЂР°РІР»РµРЅРёРµ
         float moveY = Input.GetAxisRaw("Vertical");
         
-        // Делаем длину вектора равной 1, чтобы движение по диагонали не было быстрее, чем по прямой
+        // Р”РµР»Р°РµРј РґР»РёРЅСѓ РІРµРєС‚РѕСЂР° СЂР°РІРЅРѕР№ 1, С‡С‚РѕР±С‹ РґРІРёР¶РµРЅРёРµ РїРѕ РґРёР°РіРѕРЅР°Р»Рё РЅРµ Р±С‹Р»Рѕ Р±С‹СЃС‚СЂРµРµ, С‡РµРј РїРѕ РїСЂСЏРјРѕР№
         moveDirection = new Vector2(moveX, moveY).normalized;
 
-        // Если пробел нажат + есть направление
+        // Р•СЃР»Рё РїСЂРѕР±РµР» РЅР°Р¶Р°С‚ + РµСЃС‚СЊ РЅР°РїСЂР°РІР»РµРЅРёРµ
         if (Input.GetKeyDown(KeyCode.Space) && moveDirection != Vector2.zero)
         {
             isDashing = true;
@@ -57,10 +57,10 @@ public class TopDownPlayer : MonoBehaviour
 
     void Move()
     {
-        // Если условия рывка выполнены:
+        // Р•СЃР»Рё СѓСЃР»РѕРІРёСЏ СЂС‹РІРєР° РІС‹РїРѕР»РЅРµРЅС‹:
         if (isDashing)
         {
-            // Ускоряем Player'a в направлении рывка
+            // РЈСЃРєРѕСЂСЏРµРј Player'a РІ РЅР°РїСЂР°РІР»РµРЅРёРё СЂС‹РІРєР°
             GetComponent<Rigidbody2D>().velocity = moveDirection * dashSpeed;
 
             dashTime -= Time.fixedDeltaTime;
@@ -69,10 +69,10 @@ public class TopDownPlayer : MonoBehaviour
                 isDashing = false;
             }
         }
-        // Во всех остальных случаях:
+        // Р’Рѕ РІСЃРµС… РѕСЃС‚Р°Р»СЊРЅС‹С… СЃР»СѓС‡Р°СЏС…:
         else
         {
-            // Меняем свойство velocity в компоненте RigidBody нашего Player'а
+            // РњРµРЅСЏРµРј СЃРІРѕР№СЃС‚РІРѕ velocity РІ РєРѕРјРїРѕРЅРµРЅС‚Рµ RigidBody РЅР°С€РµРіРѕ Player'Р°
             GetComponent<Rigidbody2D>().velocity = moveDirection * moveSpeed;
         }
     }

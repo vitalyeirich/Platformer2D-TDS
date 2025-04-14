@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Rigidbody2D))]
 
 // Значение гравитации уже выставлено на 0 при старте
-// Тест юникод
 
 public class TopDownPlayer : MonoBehaviour
 {

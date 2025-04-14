@@ -11,7 +11,11 @@ using UnityEngine.EventSystems;
 public class TopDownPlayer : MonoBehaviour
 {
     // обычная скорость
+<<<<<<< Updated upstream
     public float moveSpeed = 10;
+=======
+    public float moveSpeed = 10f;
+>>>>>>> Stashed changes
 
     // скорость рывка
     public float dashSpeed = 15f;

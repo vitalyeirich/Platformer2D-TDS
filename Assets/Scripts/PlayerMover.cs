@@ -11,7 +11,7 @@ using UnityEngine.EventSystems;
 public class TopDownPlayer : MonoBehaviour
 {
     // обычная скорость
-    public float moveSpeed = 5f;
+    public float moveSpeed = 50f;
 
     // скорость рывка
     public float dashSpeed = 15f;
